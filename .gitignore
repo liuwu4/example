@@ -17,3 +17,11 @@ node_modules/
 .deploy_git/
 public/
 db.json
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+feebd2b567cb29c95c73ab631a4c3f0275e5444f
