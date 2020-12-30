@@ -1,0 +1,22 @@
+
+body{
+  height: 100%;
+}
+.layout_header, .layout_footer{
+  height: 10vh;
+  background-color:#ffd591;
+}
+
+.layout_content{
+  background-color: #fff7e6;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+}
+.layout_left {
+  flex: 1;
+  background-color:#ffe7ba;
+}
+.layout_right{
+  flex: 4;
+}
