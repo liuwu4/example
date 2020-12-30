@@ -8,18 +8,90 @@
   <title>测试Vue</title>
   <link rel="stylesheet" type="text/css" href="./css/main.css" />
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./src/Card.js"></script>
 </head>
 
 <body>
   <div id='root'>
-    {{message}}
+    <div class="fixed">
+      <div :class="['header']">
+        <input :class="['input']" v-model="todoValue" placeholder="请输入任务内容" />
+        <button :class="[{add:true}]" @click="handleAdd">新建</button>
+      </div>
+    </div>
+    <div class="ul">
+      <card :card-data="item" @operating="handleOperating" :card-attr="key" v-for="(item, key, index) in todos"
+        :key="index"></card>
+    </div>
   </div>
   <script>
+    const todos = {
+      task: [
+        {
+          label: 0,
+          value: '任务一'
+        },
+        {
+          label: 1,
+          value: '任务二'
+        },
+        {
+          label: 2,
+          value: '任务一'
+        },
+        {
+          label: 3,
+          value: '任务二'
+        },
+
+      ],
+      to: [
+        {
+          label: 0,
+          value: '进行一'
+        }
+      ],
+      done: [
+        {
+          label: 0,
+          value: '完成一'
+        }
+      ]
+    }
     new Vue({
       el: '#root',
       data: {
-        message: '123421'
-      }
+        test: '1234',
+        todoValue: '',
+        todos
+      },
+      created: function () { },
+      mounted: function () { },
+      watch: {},
+      computed: {},
+      methods: {
+        handleAdd: function () {
+          const { todoValue, todos } = this.$data;
+          if (todoValue.trim()) {
+            this.$data.todos.task.push({ label: todos.task.length, value: todoValue });
+            this.$data.todoValue = "";
+          }
+        },
+        handleOperating: function (key, index, type) {
+          const { to, task, done } = this.$data.todos;
+          if (type === 'to') {
+            Object.assign(this.$data.todos, {
+              [key]: this.$data.todos[key].filter(item => item.label !== index),
+              to: [...this.$data.todos.to, ...this.$data.todos[key].filter(item => item.label === index)].map((item, index) => ({ ...item, label: index }))
+            });
+          }
+          if (type === 'delete') {
+            Object.assign(this.$data.todos, { [key]: this.$data.todos[key].filter(item => item.label !== index) });
+          }
+        }
+      },
+
+
     });
   </script>
 </body>
