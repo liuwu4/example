@@ -13,3 +13,7 @@ feebd2b567cb29c95c73ab631a4c3f0275e5444f
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
+node_modules/
+.deploy_git/
+public/
+db.json
