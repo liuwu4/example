@@ -6,19 +6,19 @@ function main() {
   var drag = document.getElementById("drag");
   var list = document.createElement("div");
   list.setAttribute("class", "list");
+  list.setAttribute('onselectstart', "return false;");
   list.onmousedown = function (event) {
     var position = list.getBoundingClientRect();
     startLeft = position.left;
     startTop = position.top;
     cursorLeft = event.clientX;
     cursorTop = event.clientY;
-    list.style.cursor = 'move';
   };
   list.onmousemove = function (event) {
-    const { clientX, clientY } = event;
     if (startLeft && startTop) {
-      var positionLeft = startLeft + (clientX - cursorLeft);
-      var positionTop = startTop + (clientY - cursorTop);
+      list.style.cursor = 'move';
+      var positionLeft = startLeft + (event.clientX - cursorLeft);
+      var positionTop = startTop + (event.clientY - cursorTop);
       if (drag.offsetLeft > positionLeft || !(positionLeft + list.getBoundingClientRect().width < drag.offsetLeft + drag.getBoundingClientRect().width)) {
         positionLeft = startLeft;
         positionTop = startTop;
@@ -37,10 +37,12 @@ function main() {
     }
   };
   list.onmouseout = function () {
+    list.style.cursor = 'default';
     startLeft = 0;
     startTop = 0;
   };
   list.onmouseup = function () {
+    list.style.cursor = 'default';
     startLeft = 0;
     startTop = 0;
   };
