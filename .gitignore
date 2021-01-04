@@ -17,3 +17,17 @@ node_modules/
 public/
 .deploy*/
 feebd2b567cb29c95c73ab631a4c3f0275e5444f
+[0-9]*/
+archives/
+categories/
+/*.lock
+/*.yml
+/package.json
+themes/
+source/
+scaffolds/
+js/
+fancybox/
+/*/fonts/
+/*/images/
+/*/style.css
