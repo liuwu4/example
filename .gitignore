@@ -5,10 +5,3 @@
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-<<<<<<< HEAD
-=======
-node_modules/
-.deploy_git/
-public/
-db.json
->>>>>>> 89b4598cd1dca2dc50af60bea4e3e129b592ac7f
