@@ -4,12 +4,7 @@
   padding: 0;
   margin: 0;
 }
-#container{
-  background-color: #f24;
-  height: 400px;
-  width: 200px;
-  margin: auto 0;
-}
+
 body{
   width: 100%;
   height: 100%;
