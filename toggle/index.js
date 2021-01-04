@@ -5,19 +5,18 @@ var cursorTop = 0;
 function main() {
   var drag = document.getElementById("drag");
   generateNode(drag);
-
 }
 
 /**
  * 生成多个不同位置的节点
- * @param {*} parentNode 父节点 
+ * @param {*} parentNode 父节点
  */
 function generateNode(parentNode) {
-  for (var i = 0; i < 2; i++) {
-    var div = document.createElement('div');
+  for (var i = 0; i < 3; i++) {
+    var div = document.createElement("div");
     div.innerText = i;
-    div.setAttribute('class', 'list list' + i);
-    div.setAttribute('onselectstart', "return false;");
+    div.setAttribute("class", "list list" + i);
+    div.setAttribute("onselectstart", "return false;");
     div.onmousedown = (function (div) {
       return function (event) {
         var position = div.getBoundingClientRect();
@@ -32,7 +31,7 @@ function generateNode(parentNode) {
         clone.style.top = startTop + "px";
         drag.appendChild(clone);
         moveDOM(clone, div);
-      }
+      };
     })(div);
     parentNode.appendChild(div);
   }
@@ -40,46 +39,75 @@ function generateNode(parentNode) {
 
 /**
  * copy可移动节点
- * @param {htmlDom} clone 
+ * @param {htmlDom} clone
  */
 function moveDOM(clone, soruceNode) {
   clone.onmousemove = function (event) {
-    soruceNode.setAttribute('class', 'source');
+    soruceNode.setAttribute("class", "source");
     if (startLeft && startTop) {
-      clone.style.cursor = 'move';
+      clone.style.cursor = "move";
       var positionLeft = startLeft + (event.clientX - cursorLeft);
       var positionTop = startTop + (event.clientY - cursorTop);
-      if (drag.offsetLeft > positionLeft
-        || !(positionLeft + clone.getBoundingClientRect().width < drag.offsetLeft + drag.getBoundingClientRect().width)
-        || drag.offsetTop > positionTop
-        || (clone.getBoundingClientRect().height + positionTop > drag.getBoundingClientRect().height + drag.offsetTop)
+      if (
+        drag.offsetLeft > positionLeft ||
+        !(
+          positionLeft + clone.getBoundingClientRect().width <
+          drag.offsetLeft + drag.getBoundingClientRect().width
+        ) ||
+        drag.offsetTop > positionTop ||
+        clone.getBoundingClientRect().height + positionTop >
+          drag.getBoundingClientRect().height + drag.offsetTop
       ) {
         positionLeft = startLeft;
         positionTop = startTop;
         startLeft = 0;
         startTop = 0;
-        soruceNode.setAttribute('class', clone.getAttribute('class'));
+        soruceNode.setAttribute("class", clone.getAttribute("class"));
         clone.remove();
       }
       clone.style.left = positionLeft + "px";
       clone.style.top = positionTop + "px";
+      exchangeStyle(clone);
     }
   };
   clone.onmouseout = function (event) {
-    clone.style.cursor = 'default';
-    startLeft = 0;
-    startTop = 0;
-    soruceNode.setAttribute('class', clone.getAttribute('class'));
-    clone.remove();
+    clean(event.target, event);
   };
   clone.onmouseup = function (event) {
-    exchange(clone, event);
-    clone.style.cursor = 'default';
-    startLeft = 0;
-    startTop = 0;
-    soruceNode.setAttribute('class', clone.getAttribute('class'));
-    clone.remove();
+    clean(event.target, event);
   };
+}
+/**
+ * 还原初始值
+ * @param {*} target
+ * @param {*} event
+ */
+function clean(target, event) {
+  target.style.cursor = "default";
+  startLeft = 0;
+  startTop = 0;
+  cursorLeft = 0;
+  cursorTop = 0;
+  exchange(target, event);
+}
+/**
+ * 移动到可交换对象上是改变样式
+ * @param {*} moveTarget 移动对象
+ */
+function exchangeStyle(moveTarget) {
+  var startPosition = moveTarget.getBoundingClientRect();
+  var all = document.querySelectorAll(".list");
+  for (var i = 0; i < all.length; i++) {
+    var position = all[i].getBoundingClientRect();
+    if (
+      all[i].offsetLeft < moveTarget.offsetLeft + startPosition.width &&
+      moveTarget.offsetLeft + startPosition.width <
+        all[i].offsetLeft + position.width
+    ) {
+      all[i].style.backgroundColor = "#ffa39e";
+      moveTarget.style.backgroundColor = "#cf1322";
+    }
+  }
 }
 
 /**
@@ -87,9 +115,34 @@ function moveDOM(clone, soruceNode) {
  * @param {*} start 开始时的target
  * @param {*} event 结束时事件的event
  */
-function exchange(start, event) {
-  var postion = start.getBoundingClientRect();
-  // console.log(start.offsetLeft, event.clientX);
+function exchange(start) {
+  var startPosition = start.getBoundingClientRect();
+  var all = document.querySelectorAll(".list");
+  for (var i = 0; i < all.length; i++) {
+    var position = all[i].getBoundingClientRect();
+    if (
+      all[i].offsetLeft < start.offsetLeft + startPosition.width &&
+      start.offsetLeft < all[i].offsetLeft + position.width
+    ) {
+      resetText(all[i], start);
+    }
+  }
+}
+
+/**
+ * 对换目标值
+ * @param {*} currentTarget 对换目标
+ * @param {*} moveTarget 被对换目标
+ */
+function resetText(currentTarget, moveTarget) {
+  var tmp = moveTarget.innerText;
+  moveTarget.innerText = currentTarget.innerText;
+  currentTarget.innerText = tmp;
+  var source = document.querySelector(".source");
+  source.innerText = moveTarget.innerText;
+  source.setAttribute("class", moveTarget.getAttribute("class"));
+  currentTarget.removeAttribute("style");
+  moveTarget.remove();
 }
 
 main();
