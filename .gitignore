@@ -16,17 +16,4 @@ db.json
 node_modules/
 public/
 .deploy*/
-categories/
-*.lock
-*.json
-themes/
-source/
-scaffolds/
-js/
-fancybox/
-archives/
-categories/a
-css/
-*.yml
 feebd2b567cb29c95c73ab631a4c3f0275e5444f
-[0-9]*/
