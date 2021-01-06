@@ -97,15 +97,32 @@ function clean(target, event) {
 function exchangeStyle(moveTarget) {
   var startPosition = moveTarget.getBoundingClientRect();
   var all = document.querySelectorAll(".list");
+  moveTarget.style.backgroundColor = "#b23";
   for (var i = 0; i < all.length; i++) {
     var position = all[i].getBoundingClientRect();
-    if (
-      all[i].offsetLeft < moveTarget.offsetLeft + startPosition.width &&
-      moveTarget.offsetLeft + startPosition.width <
-        all[i].offsetLeft + position.width
-    ) {
-      all[i].style.backgroundColor = "#ffa39e";
-      moveTarget.style.backgroundColor = "#cf1322";
+    if (moveTarget !== all[i]) {
+      all[i].style.backgroundColor = "";
+      /**
+       * 移动的元素必须宽高都必须大于一半在目标元素中才能交换
+       * |----------80----------|
+       * |**********************|___
+       * |**                  **| |
+       * |**                  **| 20
+       * |**********************|_|_
+       * |----------------------|
+       */
+      if (
+        all[i].offsetLeft + startPosition.width / 2 <
+          moveTarget.offsetLeft + startPosition.width &&
+        all[i].offsetLeft + position.width + startPosition.width / 2 >
+          moveTarget.offsetLeft + startPosition.width &&
+        all[i].offsetTop + startPosition.height / 2 <
+          moveTarget.offsetTop + startPosition.height &&
+        all[i].offsetTop + position.height + startPosition.height / 2 >
+          moveTarget.offsetTop + startPosition.height
+      ) {
+        all[i].style.backgroundColor = "#ffa39e";
+      }
     }
   }
 }
@@ -121,8 +138,14 @@ function exchange(start) {
   for (var i = 0; i < all.length; i++) {
     var position = all[i].getBoundingClientRect();
     if (
-      all[i].offsetLeft < start.offsetLeft + startPosition.width &&
-      start.offsetLeft < all[i].offsetLeft + position.width
+      all[i].offsetLeft + startPosition.width / 2 <
+        start.offsetLeft + startPosition.width &&
+      all[i].offsetLeft + position.width + startPosition.width / 2 >
+        start.offsetLeft + startPosition.width &&
+      all[i].offsetTop + startPosition.height / 2 <
+        start.offsetTop + startPosition.height &&
+      all[i].offsetTop + position.height + startPosition.height / 2 >
+        start.offsetTop + startPosition.height
     ) {
       resetText(all[i], start);
     }
