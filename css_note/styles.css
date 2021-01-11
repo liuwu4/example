@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+div {
+  height: 100%;
+}
+#parent {
+  width: 100%;
+  min-width: 400px;
+}
+#parent > div {
+  float: left;
+}
+#center {
+  box-sizing: border-box;
+  word-break: break-all;
+  padding-left: 200px;
+  padding-right: 160px;
+  width: 100%;
+  background-color: antiquewhite;
+}
+#left,
+#right {
+  box-sizing: border-box;
+  padding: 0 20px;
+  word-break: break-all;
+}
+#left {
+  overflow: hidden;
+  width: 200px;
+  margin-left: -100%;
+  background-color: aquamarine;
+}
+#right {
+  width: 160px;
+  margin-left: -160px;
+  background-color: blue;
+}
