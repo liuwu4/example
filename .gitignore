@@ -8,6 +8,7 @@
 node_modules/
 .deploy_git/
 public/
+.vscode/
 db.json
 .DS_Store
 Thumbs.db

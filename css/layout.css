@@ -1,13 +1,13 @@
-
-body{
+body {
   height: 100%;
 }
-.layout_header, .layout_footer{
+.layout_header,
+.layout_footer {
   height: 10vh;
-  background-color:#ffd591;
+  background-color: #ffd591;
 }
 
-.layout_content{
+.layout_content {
   background-color: #fff7e6;
   height: 80vh;
   display: flex;
@@ -15,8 +15,8 @@ body{
 }
 .layout_left {
   flex: 1;
-  background-color:#ffe7ba;
+  background-color: #ffe7ba;
 }
-.layout_right{
+.layout_right {
   flex: 4;
 }
