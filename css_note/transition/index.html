@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translation</title>
+  <link rel="stylesheet" type="text/css" href="/css/global.css" />
+  <link rel="stylesheet" type="text/css" href="./css/animated.css" />
+</head>
+
+<body>
+  <div id="parent">
+    <div id="operation">
+      <div id="btn">
+        <span id="decrease" class="btn" onclick="decrease('skewX')">-</span>
+        <span>skewX</span>
+        <span id="increase" class="btn" onclick="increase('skewX')">+</span>
+        <span class="skewX">0</span>
+      </div>
+      <div id="btn">
+        <span id="decrease" class="btn" onclick="decrease('skewY')">-</span>
+        <spna>skewY</spna>
+        <span id="increase" class="btn" onclick="increase('skewY')">+</span>
+        <span class="skewY">0</span>
+      </div>
+      <div id="btn">
+        <span id="decrease" class="btn" onclick="decrease('scaleX')">-</span>
+        scaleX
+        <span id="increase" class="btn" onclick="increase('scaleX')">+</span>
+        <span class="scaleX">1</span>
+      </div>
+      <div id="btn">
+        <span id="decrease" class="btn" onclick="decrease('scaleY')">-</span>
+        scaleY
+        <span id="increase" class="btn" onclick="increase('scaleY')">+</span>
+        <span class="scaleY">1</span>
+      </div>
+      <div id="btn">
+        <span id="decrease" class="btn" onclick="decrease('translateX')">-</span>
+        translateX
+        <span id="increase" class="btn" onclick="increase('translateX')">+</span>
+        <span class="translateX">0</span>
+      </div>
+      <div id="btn">
+        <span id="decrease" class="btn" onclick="decrease('translateY')">-</span>
+        translateY
+        <span id="increase" class="btn" onclick="increase('translateY')">+</span>
+        <span class="translateY">0</span>
+      </div>
+    </div>
+    <div id="show">
+      <div id="one"> 1 </div>
+    </div>
+  </div>
+</body>
+<script>
+  const PI = Math.PI / 180;
+  // transform:matrix
+  function sin(angle) {
+    return Math.sin(PI * angle);
+  }
+  function cos(angle) {
+    return Math.cos(PI * angle);
+  }
+  function tan(angle) {
+    return Math.tan(PI * angle);
+  }
+
+  function main() {
+    const one = document.getElementById('one');
+    one.style.transform = `matrix(1, 0, 0, 1, 0, 0)`;
+  }
+  // 减
+  function decrease(attr, event) {
+    console.log(attr, event);
+    const tag = document.querySelector(`.${attr}`);
+    console.log(tag.innerText);
+  }
+  // 加
+  function increase(attr) {
+    console.log('+', attr);
+  }
+
+  /**
+   * scale, skew, translate
+   * 0, 0, 0 ----- x
+   * 0, 0, 0 ----- y
+   */
+  main();
+</script>
+
+</html>
