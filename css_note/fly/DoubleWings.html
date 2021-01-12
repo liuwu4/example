@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双飞翼布局</title>
+  <link rel="stylesheet" type="text/css" href="./float_fly.css" />
+</head>
+
+<body>
+  <!-- 
+    1.定义三个盒子center, left, right
+    2.三个盒子设置浮动float: left
+    3.center宽度100%， right,left宽度设置为指定宽度
+    4.left盒子margin-left:-100%, right盒子margin-left:-right盒子宽度
+    5.在center中插入一个盒子， 盒子(margin|padding): 0 right宽度 0 left宽度    
+  -->
+  <div id="double">
+    <div id="center">
+      <div id="inner">内容区域</div>
+    </div>
+    <div id="left"></div>
+    <div id="right"></div>
+  </div>
+</body>
+
+</html>
