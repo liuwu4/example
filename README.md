@@ -21,3 +21,7 @@
 ### [Linux](./linux/ssh.md)
 
 - `Linux` 常用记录
+
+### [MySql](./mysql/目录.md)
+
+- `MySql` 常用记录
