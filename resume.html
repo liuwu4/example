@@ -7,8 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<link rel="stylesheet/less" type="text/css" href="resume.less" />
+<link rel="stylesheet/less" type="text/css" href="./resume/resume.less" />
 <script src="./lib/less.js"></script>
+<script src="./resume/data.js"></script>
 
 <body>
   <div id="app">
@@ -52,103 +53,25 @@
           <span>2019.06 </span>
         </div>
       </div>
-      <div class="skill">
-        <div class="item">
-          <span class="java">
-            Java
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="mysql">
-            Mysql
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="javascript">
-            JavaScript
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="node">
-            Node
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="html">
-            Html
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="jquery">
-            Jquery
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="less">
-            Css/Less
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="android">
-            Android
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="react">
-            React/React-Native
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="vue">
-            Vue
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="webpack">
-            Webpack
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="jest">
-            Jest
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="git">
-            Git
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="nginx">
-            Nginx
-          </span>
-          <div></div>
-        </div>
-        <div class="item">
-          <span class="shell">
-            Shell
-          </span>
-          <div></div>
-        </div>
+      <div id="skill" class="skill">
+
       </div>
     </header>
     <main>
-      <h3>项目经验</h3>
+      <h3>项目经历</h3>
+      <div id="projects"></div>
+      <div id="evaluate">
+        <h4>自我评价</h4>
+        <ol>
+          <li>有良好的团队合作精神，具有良好的分析能力，自学能力，适应能力</li>
+          <li>工作上积极主动，吃苦耐劳，认真负责，对软件开发有浓厚的兴趣。</li>
+          <li>能在紧迫的时间完成任务。</li>
+          <li>性格开朗，沉着冷静，乐观向上。</li>
+        </ol>
+      </div>
     </main>
   </div>
+  <script src="./resume/index.js"></script>
 </body>
 
 </html>

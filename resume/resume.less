@@ -53,30 +53,61 @@ body {
       width: 50%;
 
       &>.item {
-        margin             : 10px 0;
-        width              : 100%;
-        // background-color: #fff;
+        margin: 10px 0;
+        width : 100%;
       }
     }
 
     &>.skill {
-      margin    : 20px 0;
-      width     : 50%;
-      // outline: 1px solid #000;
+      margin: 20px 0;
+      width : 50%;
 
       &>.item {
         margin: 10px 0;
 
         &>div {
-          height          : 5px;
+          height          : 4px;
           width           : 100%;
+          margin-top      : 4px;
+          border-radius   : 20px;
           background-color: #fff;
+
+          &>.proficiency {
+            height          : 100%;
+            border-radius   : 20px;
+            background-color: #ce9d61;
+          }
         }
       }
     }
   }
 
   &>main {
-    flex: 2;
+    flex   : 2;
+    padding: 0 20px;
+
+    &>h3 {
+      text-align: center;
+    }
+
+    &>#projects {
+      width: 100%;
+
+      &>.columns {
+        padding: 10px 0;
+
+        &:not(:last-child) {
+          border-bottom: 2px solid #6b4b24;
+        }
+      }
+    }
+
+    &>#evaluate {
+      margin-top: 10px;
+
+      &>h4 {
+        text-align: center;
+      }
+    }
   }
 }
