@@ -53,6 +53,14 @@ body {
       width: 50%;
 
       &>.item {
+        &>.person-title {
+          &::after {
+            content       : "：";
+            display       : inline-block;
+            vertical-align: text-top;
+          }
+        }
+
         margin: 10px 0;
         width : 100%;
       }

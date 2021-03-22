@@ -22,64 +22,28 @@ const projects = [
   },
   {
     value: '中汇文具-管理端',
-    skills: [
-      'react',
-      'typescript',
-      'javascript',
-      'antd',
-      'RESTful',
-      'graphql',
-      'less',
-      'node',
-      'd3',
-      'eslint'
-    ],
+    skills: ['react', 'typescript', 'javascript', 'antd', 'RESTful', 'graphql', 'less', 'node', 'd3', 'eslint'],
     date: '2020/09-2020/11',
     description: '',
     qaq: ''
   },
   {
     value: '联通标签管理',
-    skills: [
-      'react',
-      'typescript',
-      'javascript',
-      'antd',
-      'less',
-      'node',
-      'eslint'
-    ],
+    skills: ['react', 'typescript', 'javascript', 'antd', 'less', 'node', 'eslint'],
     date: '2020/04-2020/07',
     description: '',
     qaq: ''
   },
   {
     value: '联通自定义组件库',
-    skills: [
-      'react',
-      'typescript',
-      'javascript',
-      'antd',
-      'less',
-      'node',
-      'eslint'
-    ],
+    skills: ['react', 'typescript', 'javascript', 'antd', 'less', 'node', 'eslint'],
     date: '2020/02-2020/03',
     description: '',
     qaq: ''
   },
   {
     value: '联通人力2.0-(高管/中层)',
-    skills: [
-      'react',
-      'typescript',
-      'javascript',
-      'antd',
-      'less',
-      'node',
-      'eslint',
-      'RESTful'
-    ],
+    skills: ['react', 'typescript', 'javascript', 'antd', 'less', 'node', 'eslint', 'RESTful'],
     date: '2019/07-2019/10',
     description: '',
     qaq: ''
@@ -87,16 +51,7 @@ const projects = [
 
   {
     value: '中汇文具-销售端',
-    skills: [
-      'react-native',
-      'javascript',
-      'typescript',
-      'java',
-      'object-c',
-      'graphql',
-      'RESTful',
-      'node'
-    ],
+    skills: ['react-native', 'javascript', 'typescript', 'java', 'object-c', 'graphql', 'RESTful', 'node'],
     date: '2019/05-至今',
     description: '',
     qaq: ''
@@ -178,5 +133,44 @@ const skills = [
     key: 'Shell',
     value: 'Shell',
     proficiency: 20
+  }
+];
+
+const personInfo = [
+  {
+    key: '姓名',
+    value: 'xxx'
+  },
+  {
+    key: '性别',
+    value: 'xxx'
+  },
+  {
+    key: '年龄',
+    value: 'xxx'
+  },
+  {
+    key: '工作年限',
+    value: 'xxx'
+  },
+  {
+    key: '意向',
+    value: 'xxx'
+  },
+  {
+    key: '联系电话',
+    value: 'xxx'
+  },
+  {
+    key: '邮箱',
+    value: 'xxx'
+  },
+  {
+    key: '学历',
+    value: 'xxx'
+  },
+  {
+    key: '毕业时间',
+    value: 'xxx'
   }
 ];

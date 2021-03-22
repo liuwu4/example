@@ -73,6 +73,23 @@ function project(item) {
   return columns;
 }
 
+function sidebar() {
+  const side = document.querySelector('#person');
+  personInfo.forEach((item) => {
+    console.log(item);
+    const container = document.createElement('div');
+    container.setAttribute('class', 'item');
+    const title = document.createElement('span');
+    title.setAttribute('class', 'person-title');
+    title.innerText = item.key;
+    const value = document.createElement('span');
+    value.setAttribute('class', 'person-value');
+    value.innerText = item.value;
+    add(container, [title, value]);
+    side.appendChild(container);
+  });
+}
+
 function start() {
   const parent = document.querySelector('#skill');
   skills.forEach((item) => {
@@ -82,5 +99,6 @@ function start() {
   projects.forEach((item) => {
     projectContainer.appendChild(project(item));
   });
+  sidebar();
 }
 start();

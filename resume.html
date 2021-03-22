@@ -1,77 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet/less" type="text/css" href="./resume/resume.less" />
+  <script src="./lib/less.js"></script>
+  <script src="./resume/data.js"></script>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<link rel="stylesheet/less" type="text/css" href="./resume/resume.less" />
-<script src="./lib/less.js"></script>
-<script src="./resume/data.js"></script>
-
-<body>
-  <div id="app">
-    <header>
-      <div class="avatar"></div>
-      <div class="person">
-        <div class="item">
-          <span>姓名:</span>
-          <span>余杰</span>
+  <body>
+    <div id="app">
+      <header>
+        <div class="avatar"></div>
+        <div id="person" class="person"></div>
+        <div id="skill" class="skill"></div>
+      </header>
+      <main>
+        <h3>项目经历</h3>
+        <div id="projects"></div>
+        <div id="evaluate">
+          <h4>自我评价</h4>
+          <ol>
+            <li>有良好的团队合作精神，具有良好的分析能力，自学能力，适应能力</li>
+            <li>工作上积极主动，吃苦耐劳，认真负责，对软件开发有浓厚的兴趣。</li>
+            <li>能在紧迫的时间完成任务。</li>
+            <li>性格开朗，沉着冷静，乐观向上。</li>
+          </ol>
         </div>
-        <div class="item">
-          <span>性别:</span>
-          <span>男</span>
-        </div>
-        <div class="item">
-          <span>年龄:</span>
-          <span>23</span>
-        </div>
-        <div class="item">
-          <span>工作年限:</span>
-          <span>2.5</span>
-        </div>
-        <div class="item">
-          <span>意向:</span>
-          <span>前端开发</span>
-        </div>
-        <div class="item">
-          <span>联系电话:</span>
-          <span>15082000855</span>
-        </div>
-        <div class="item">
-          <span>邮箱:</span>
-          <span>liuwu4@yeah.net</span>
-        </div>
-        <div class="item">
-          <span>学历: </span>
-          <span>大专</span>
-        </div>
-        <div class="item">
-          <span>毕业时间: </span>
-          <span>2019.06 </span>
-        </div>
-      </div>
-      <div id="skill" class="skill">
-
-      </div>
-    </header>
-    <main>
-      <h3>项目经历</h3>
-      <div id="projects"></div>
-      <div id="evaluate">
-        <h4>自我评价</h4>
-        <ol>
-          <li>有良好的团队合作精神，具有良好的分析能力，自学能力，适应能力</li>
-          <li>工作上积极主动，吃苦耐劳，认真负责，对软件开发有浓厚的兴趣。</li>
-          <li>能在紧迫的时间完成任务。</li>
-          <li>性格开朗，沉着冷静，乐观向上。</li>
-        </ol>
-      </div>
-    </main>
-  </div>
-  <script src="./resume/index.js"></script>
-</body>
-
+      </main>
+    </div>
+    <script src="./resume/index.js"></script>
+  </body>
 </html>
