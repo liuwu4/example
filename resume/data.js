@@ -110,27 +110,27 @@ const skills = [
   {
     key: 'JavaScript',
     value: 'JavaScript',
-    proficiency: 80
+    proficiency: 60
   },
   {
     key: 'Node',
     value: 'Node',
-    proficiency: 70
+    proficiency: 60
   },
   {
     key: 'html',
     value: 'html',
-    proficiency: 90
+    proficiency: 70
   },
   {
     key: 'Jquery',
     value: 'Jquery',
-    proficiency: 90
+    proficiency: 50
   },
   {
     key: 'Css',
     value: 'Css/Less',
-    proficiency: 80
+    proficiency: 70
   },
   {
     key: 'Android',
