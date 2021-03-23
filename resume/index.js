@@ -74,40 +74,29 @@ function project(item) {
   const { value, skills, date, description, qaq } = item;
   const columns = document.createElement('div');
   columns.setAttribute('class', 'columns');
-  // title
-  const titleBarColumns = document.createElement('div');
-  titleBarColumns.setAttribute('class', 'titleBarColumns');
-  const title = document.createElement('span');
+  const title = document.createElement('div');
   title.setAttribute('class', 'title');
   title.innerText = `项目名称：${value}`;
   const time = document.createElement('div');
   time.setAttribute('class', 'time');
   time.innerText = `项目时间：${date}`;
   // 技能
-  const skillColumns = document.createElement('div');
-  skillColumns.setAttribute('class', 'skillColumns');
-  const skillNode = document.createElement('span');
+  // const skillColumns = document.createElement('div');
+  // skillColumns.setAttribute('class', 'skillColumns');
+  const skillNode = document.createElement('div');
   skillNode.setAttribute('class', 'skill');
   skillNode.innerText = `使用技术：${skills.join('，')}`;
   // 描述
-  const descriptionColumns = document.createElement('div');
-  descriptionColumns.setAttribute('class', 'descriptionColumns');
-  const descriptionNode = document.createElement('span');
-  descriptionNode.setAttribute('class', 'skill');
-  descriptionNode.innerText = `项目描述：`;
+  const descriptionNode = document.createElement('div');
+  descriptionNode.setAttribute('class', 'description');
+  descriptionNode.innerText = `项目描述`;
   // QAQ
-  const QAQColumns = document.createElement('div');
-  QAQColumns.setAttribute('class', 'QAQColumns');
   const QAQNode = document.createElement('span');
-  QAQNode.setAttribute('class', 'QAQ');
-  QAQNode.innerText = `项目问题：`;
-  add(titleBarColumns, [title, time]);
-  add(skillColumns, [skillNode]);
-  add(descriptionColumns, [descriptionNode]);
-  renderDescription(descriptionColumns, description);
-  qaq && add(QAQColumns, [QAQNode]);
-  qaq && renderQuestion(QAQColumns, qaq);
-  add(columns, [titleBarColumns, skillColumns, descriptionColumns, QAQColumns]);
+  QAQNode.setAttribute('class', 'question');
+  QAQNode.innerText = `项目问题`;
+  renderDescription(descriptionNode, description);
+  qaq && renderQuestion(QAQNode, qaq);
+  add(columns, [title, time, skillNode, descriptionNode, QAQNode]);
   return columns;
 }
 /**

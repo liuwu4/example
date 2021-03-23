@@ -1,4 +1,13 @@
 // 项目经历
+const project_test = [
+  {
+    name: '项目名称',
+    date: '项目时间',
+    kills: '项目技术',
+    description: '项目描述',
+    question: 'qaq'
+  }
+];
 const projects = [
   {
     value: '全面激励报告-管理端',
