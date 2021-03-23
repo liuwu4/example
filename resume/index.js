@@ -96,7 +96,8 @@ function project(item) {
   QAQNode.innerText = `项目问题`;
   renderDescription(descriptionNode, description);
   qaq && renderQuestion(QAQNode, qaq);
-  add(columns, [title, time, skillNode, descriptionNode, QAQNode]);
+  add(columns, [title, time, skillNode, descriptionNode]);
+  qaq && add(columns, [QAQNode]);
   return columns;
 }
 /**
