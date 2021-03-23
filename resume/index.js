@@ -29,6 +29,42 @@ function node(title, key, proficiency) {
   container.appendChild(skilled);
   return container;
 }
+/**
+ * 渲染项目描述
+ * @param {*} parentNode
+ * @param {*} data
+ */
+function renderDescription(parentNode, data) {
+  const ul = document.createElement('ul');
+  ul.setAttribute('class', 'description-list');
+  data.forEach((item) => {
+    const li = document.createElement('li');
+    li.innerHTML = item;
+    ul.appendChild(li);
+  });
+  parentNode.appendChild(ul);
+}
+/**
+ * 渲染项目问题
+ * @param {*} parentNode
+ * @param {*} data
+ */
+function renderQuestion(parentNode, data) {
+  const ul = document.createElement('ul');
+  ul.setAttribute('class', 'question-ul');
+  data.forEach((item) => {
+    const { question, answer } = item;
+    const li = document.createElement('li');
+    li.setAttribute('class', 'question-li');
+    li.innerHTML = question;
+    const result = document.createElement('div');
+    result.setAttribute = 'answer-li';
+    result.innerHTML = answer;
+    li.appendChild(result);
+    ul.appendChild(li);
+  });
+  parentNode.appendChild(ul);
+}
 
 /**
  * 渲染项目节点
@@ -38,39 +74,49 @@ function project(item) {
   const { value, skills, date, description, qaq } = item;
   const columns = document.createElement('div');
   columns.setAttribute('class', 'columns');
-  // title
-  const titleBarColumns = document.createElement('div');
-  titleBarColumns.setAttribute('class', 'titleBarColumns');
-  const title = document.createElement('span');
+  const title = document.createElement('div');
   title.setAttribute('class', 'title');
   title.innerText = `项目名称：${value}`;
-  const time = document.createElement('span');
+  const time = document.createElement('div');
   time.setAttribute('class', 'time');
   time.innerText = `项目时间：${date}`;
   // 技能
-  const skillColumns = document.createElement('div');
-  skillColumns.setAttribute('class', 'skillColumns');
-  const skillNode = document.createElement('span');
+  // const skillColumns = document.createElement('div');
+  // skillColumns.setAttribute('class', 'skillColumns');
+  const skillNode = document.createElement('div');
   skillNode.setAttribute('class', 'skill');
   skillNode.innerText = `使用技术：${skills.join('，')}`;
   // 描述
-  const descriptionColumns = document.createElement('div');
-  descriptionColumns.setAttribute('class', 'descriptionColumns');
-  const descriptionNode = document.createElement('span');
-  descriptionNode.setAttribute('class', 'skill');
-  descriptionNode.innerHTML = `项目描述：${description}`;
+  const descriptionNode = document.createElement('div');
+  descriptionNode.setAttribute('class', 'description');
+  descriptionNode.innerText = `项目描述`;
   // QAQ
-  const QAQColumns = document.createElement('div');
-  QAQColumns.setAttribute('class', 'QAQColumns');
   const QAQNode = document.createElement('span');
-  QAQNode.setAttribute('class', 'QAQ');
-  QAQNode.innerText = `QAQ：${qaq}`;
-  add(titleBarColumns, [title, time]);
-  add(skillColumns, [skillNode]);
-  add(descriptionColumns, [descriptionNode]);
-  add(QAQColumns, [QAQNode]);
-  add(columns, [titleBarColumns, skillColumns, descriptionColumns, QAQColumns]);
+  QAQNode.setAttribute('class', 'question');
+  QAQNode.innerText = `项目问题`;
+  renderDescription(descriptionNode, description);
+  qaq && renderQuestion(QAQNode, qaq);
+  add(columns, [title, time, skillNode, descriptionNode]);
+  qaq && add(columns, [QAQNode]);
   return columns;
+}
+/**
+ * 侧边栏信息
+ */
+function sidebar() {
+  const side = document.querySelector('#person');
+  personInfo.forEach((item) => {
+    const container = document.createElement('div');
+    container.setAttribute('class', 'item');
+    const title = document.createElement('span');
+    title.setAttribute('class', 'person-title');
+    title.innerText = item.key;
+    const value = document.createElement('span');
+    value.setAttribute('class', 'person-value');
+    value.innerText = item.value;
+    add(container, [title, value]);
+    side.appendChild(container);
+  });
 }
 
 function start() {
@@ -82,5 +128,6 @@ function start() {
   projects.forEach((item) => {
     projectContainer.appendChild(project(item));
   });
+  sidebar();
 }
 start();
