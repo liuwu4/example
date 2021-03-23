@@ -58,7 +58,7 @@ function project(item) {
   descriptionColumns.setAttribute('class', 'descriptionColumns');
   const descriptionNode = document.createElement('span');
   descriptionNode.setAttribute('class', 'skill');
-  descriptionNode.innerText = `项目描述：${description}`;
+  descriptionNode.innerHTML = `项目描述：${description}`;
   // QAQ
   const QAQColumns = document.createElement('div');
   QAQColumns.setAttribute('class', 'QAQColumns');
