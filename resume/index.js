@@ -29,6 +29,42 @@ function node(title, key, proficiency) {
   container.appendChild(skilled);
   return container;
 }
+/**
+ * 渲染项目描述
+ * @param {*} parentNode
+ * @param {*} data
+ */
+function renderDescription(parentNode, data) {
+  const ul = document.createElement('ul');
+  ul.setAttribute('class', 'description-list');
+  data.forEach((item) => {
+    const li = document.createElement('li');
+    li.innerHTML = item;
+    ul.appendChild(li);
+  });
+  parentNode.appendChild(ul);
+}
+/**
+ * 渲染项目问题
+ * @param {*} parentNode
+ * @param {*} data
+ */
+function renderQuestion(parentNode, data) {
+  const ul = document.createElement('ul');
+  ul.setAttribute('class', 'question-ul');
+  data.forEach((item) => {
+    const { question, answer } = item;
+    const li = document.createElement('li');
+    li.setAttribute('class', 'question-li');
+    li.innerHTML = question;
+    const result = document.createElement('div');
+    result.setAttribute = 'answer-li';
+    result.innerHTML = answer;
+    li.appendChild(result);
+    ul.appendChild(li);
+  });
+  parentNode.appendChild(ul);
+}
 
 /**
  * 渲染项目节点
@@ -44,7 +80,7 @@ function project(item) {
   const title = document.createElement('span');
   title.setAttribute('class', 'title');
   title.innerText = `项目名称：${value}`;
-  const time = document.createElement('span');
+  const time = document.createElement('div');
   time.setAttribute('class', 'time');
   time.innerText = `项目时间：${date}`;
   // 技能
@@ -58,25 +94,28 @@ function project(item) {
   descriptionColumns.setAttribute('class', 'descriptionColumns');
   const descriptionNode = document.createElement('span');
   descriptionNode.setAttribute('class', 'skill');
-  descriptionNode.innerText = `项目描述：${description}`;
+  descriptionNode.innerText = `项目描述：`;
   // QAQ
   const QAQColumns = document.createElement('div');
   QAQColumns.setAttribute('class', 'QAQColumns');
   const QAQNode = document.createElement('span');
   QAQNode.setAttribute('class', 'QAQ');
-  QAQNode.innerText = `QAQ：${qaq}`;
+  QAQNode.innerText = `项目问题：`;
   add(titleBarColumns, [title, time]);
   add(skillColumns, [skillNode]);
   add(descriptionColumns, [descriptionNode]);
-  add(QAQColumns, [QAQNode]);
+  renderDescription(descriptionColumns, description);
+  qaq && add(QAQColumns, [QAQNode]);
+  qaq && renderQuestion(QAQColumns, qaq);
   add(columns, [titleBarColumns, skillColumns, descriptionColumns, QAQColumns]);
   return columns;
 }
-
+/**
+ * 侧边栏信息
+ */
 function sidebar() {
   const side = document.querySelector('#person');
   personInfo.forEach((item) => {
-    console.log(item);
     const container = document.createElement('div');
     container.setAttribute('class', 'item');
     const title = document.createElement('span');
