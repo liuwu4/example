@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translation</title>
+    <link rel="stylesheet" type="text/css" href="../css/global.css" />
+    <link rel="stylesheet" type="text/css" href="./css/animated.css" />
+  </head>
+
+  <body>
+    <div id="parent">
+      <div id="operation">
+        <div id="btn">
+          <span id="decrease" class="btn" onclick="decrease('perspective')">-</span>
+          <span>perspective</span>
+          <span id="increase" class="btn" onclick="increase('perspective')">+</span>
+          <input class="perspective" onchange="change(this)" />
+        </div>
+        <div id="btn">
+          <span id="decrease" class="btn" onclick="decrease('skewX')">-</span>
+          <span>skewX</span>
+          <span id="increase" class="btn" onclick="increase('skewX')">+</span>
+          <input class="skewX" onchange="change(this)" />
+        </div>
+        <div id="btn">
+          <span id="decrease" class="btn" onclick="decrease('skewY')">-</span>
+          <spna>skewY</spna>
+          <span id="increase" class="btn" onclick="increase('skewY')">+</span>
+          <input class="skewY" onchange="change(this)" />
+        </div>
+        <div id="btn">
+          <span id="decrease" class="btn" onclick="decrease('scaleX')">-</span>
+          scaleX
+          <span id="increase" class="btn" onclick="increase('scaleX')">+</span>
+          <input class="scaleX" onchange="change(this)" />
+        </div>
+        <div id="btn">
+          <span id="decrease" class="btn" onclick="decrease('scaleY')">-</span>
+          scaleY
+          <span id="increase" class="btn" onclick="increase('scaleY')">+</span>
+          <input class="scaleY" onchange="change(this)" />
+        </div>
+        <div id="btn">
+          <span id="decrease" class="btn" onclick="decrease('translateX')">-</span>
+          translateX
+          <span id="increase" class="btn" onclick="increase('translateX')">+</span>
+          <input class="translateX" onchange="change(this)" />
+        </div>
+        <div id="btn">
+          <span id="decrease" class="btn" onclick="decrease('translateY')">-</span>
+          translateY
+          <span id="increase" class="btn" onclick="increase('translateY')">+</span>
+          <input class="translateY" onchange="change(this)" />
+        </div>
+      </div>
+      <div id="show">
+        <div id="one">1</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let perspective = 180;
+    const matrix = {
+      skewX: 1,
+      skewY: -1,
+      scaleX: 1,
+      scaleY: 1,
+      translateX: 0,
+      translateY: 0
+    };
+    const PI = Math.PI / 180;
+    // transform:matrix
+    function sin(angle) {
+      return Math.sin(PI * angle);
+    }
+    function cos(angle) {
+      return Math.cos(PI * angle);
+    }
+    function tan(angle) {
+      return Math.tan(PI * angle);
+    }
+    // 减
+    function decrease(attr, event) {
+      const tag = document.querySelector(`.${attr}`);
+      const skewPattern = /skew(X|Y)/;
+      let val = +tag.value;
+      if (skewPattern.test(attr)) {
+        val = val - 1;
+        Object.assign(matrix, { [attr]: sin(val) });
+      }
+      if (/translate(X|Y)/.test(attr)) {
+        val = val - 1;
+        Object.assign(matrix, { [attr]: val });
+      }
+      if (/scale(X|Y)/.test(attr)) {
+        val = val - 1;
+        Object.assign(matrix, { [attr]: val });
+      }
+      if (/perspective/.test(attr)) {
+        tag.val = val - 1;
+      }
+      tag.value = val;
+      const one = document.getElementById('one');
+      one.style.transform = `matrix(${Object.values(matrix)})`;
+    }
+    // 加
+    function increase(attr) {
+      const tag = document.querySelector(`.${attr}`);
+      let val = +tag.value;
+      if (/skew(X|Y)/.test(attr)) {
+        val = val + 1;
+        Object.assign(matrix, { [attr]: sin(val) });
+      }
+      if (/translate(X|Y)/.test(attr)) {
+        val = val + 1;
+        Object.assign(matrix, { [attr]: val });
+      }
+      if (/scale(X|Y)/.test(attr)) {
+        val = val + 1;
+        Object.assign(matrix, { [attr]: val });
+      }
+      if (/perspective/.test(attr)) {
+        perspective = val + 1;
+        val = perspective;
+      }
+      tag.value = val;
+      const one = document.getElementById('one');
+      one.style.transform = `matrix(${Object.values(matrix)})`;
+      one.style.perspective = perspective;
+    }
+    function change(event) {
+      const attr = event.getAttribute('class');
+      const val = event.value;
+      if (/skew(X|Y)/.test(attr)) {
+        Object.assign(matrix, { [attr]: sin(val) });
+      }
+      if (/translate(X|Y)/.test(attr)) {
+        Object.assign(matrix, { [attr]: val });
+      }
+      if (/scale(X|Y)/.test(attr)) {
+        Object.assign(matrix, { [attr]: val });
+      }
+      if (/perspective/.test(attr)) {
+        perspective = val;
+      }
+      const one = document.getElementById('one');
+      one.style.transform = `matrix(${Object.values(matrix)})`;
+      one.style.perspective = perspective;
+    }
+    function start() {
+      document.querySelector(`.perspective`).value = perspective;
+      Object.keys(matrix).forEach((item) => {
+        document.querySelector(`.${item}`).value = matrix[item];
+      });
+      const one = document.getElementById('one');
+      one.style.transform = `matrix(${Object.values(matrix)}) perspective(0px)`;
+      one.style.transformOrigin = 'left top';
+    }
+    start();
+    /**
+     * skew, scale, translate
+     * 0, 0, 0 ----- x
+     * 0, 0, 0 ----- y
+     */
+  </script>
+</html>
