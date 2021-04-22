@@ -1,0 +1,18 @@
+body {
+  overflow: hidden;
+}
+
+#flipbook {
+  width: 400px;
+  height: 300px;
+  border: 1px solid #f24;
+}
+#flipbook > div {
+  background-color: #f24;
+  color: #fff;
+}
+#nav > a {
+  margin: 10px;
+  user-select: none;
+  cursor: pointer;
+}
