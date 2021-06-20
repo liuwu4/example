@@ -1,10 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-.idea/.gitignore
-.idea/deployment.xml
-.idea/liuwu4.github.io.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
+.idea/
 node_modules/
 .deploy_git/
 public/
