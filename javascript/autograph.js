@@ -3,6 +3,9 @@ let main = {
   ele: "autograph",
   isDown: false,
   canvas: null,
+  width: 600,
+  height: 300,
+  scale: window.devicePixelRatio,
   content: false,
   save: function () {
     const canvas = document.getElementById(this.ele);
@@ -10,8 +13,8 @@ let main = {
     const base64 = canvas.toDataURL({
       format: "image/png",
       quality: 1,
-      width: 600,
-      height: 300,
+      width: this.width,
+      height: this.height,
     });
     // 这里是获取到的图片base64编码,这里只是个例子哈，要自行编码图片替换这里才能测试看到效果
     const imgUrl = base64;
@@ -39,16 +42,13 @@ let main = {
     }
     this.content = false;
     this.canvas.fillStyle = "white";
-    this.canvas.fillRect(0, 0, 600, 300);
-  },
-  roate: function () {
-    this.canvas.rotate((90 * Math.PI) / 180);
+    this.canvas.fillRect(0, 0, this.width, this.height);
   },
   createBtn: function () {
     const div = document.createElement("div");
     div.setAttribute("id", "btns");
     const self = this;
-    ["save", "reset", "roate"].forEach((item) => {
+    ["save", "reset"].forEach((item) => {
       const btn = document.createElement("div");
       btn.setAttribute("id", `btns-${item}`);
       btn.onclick = this[item].bind(self);
@@ -60,8 +60,8 @@ let main = {
   createCanvas: function () {
     const canvas = document.createElement("canvas");
     canvas.setAttribute("id", this.ele);
-    canvas.setAttribute("width", 600);
-    canvas.setAttribute("height", 300);
+    canvas.setAttribute("width", this.width);
+    canvas.setAttribute("height", this.height);
     canvas.style.border = "1px solid #9e9e9e";
     canvas.innerHTML = "<p>你的浏览器不支持此属性canvas</p>";
     const parent = document.getElementById(this.parent);

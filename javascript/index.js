@@ -1,7 +1,7 @@
 /*
  * @Author: yj
  * @Date: 2021-04-26 11:45:53
- * @LastEditTime: 2021-04-27 14:42:12
+ * @LastEditTime: 2021-06-22 13:56:21
  * @Description: js 测试
  */
 
@@ -22,3 +22,8 @@ const shape = {
 // const c = { key: "mm" };
 // a[b] = "132";
 // console.log(a[b], {} + "b");
+function run() {}
+const Run = new run();
+
+console.log("----", Run, Run.__proto__ == run.prototype);
+console.log("function:", run.prototype);
