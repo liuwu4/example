@@ -1,0 +1,42 @@
+@import '/global.less';
+@import url('./assets/iconfont.css');
+@namespace: ~'#app';
+
+@{namespace} {
+
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  height         : 400px;
+  width          : 80%;
+
+  #editor {
+    border: 1px solid #9c9c9c;
+  }
+}
+
+#btns {
+  height         : 300px;
+  margin-left    : 10px;
+  display        : flex;
+  flex-direction : column;
+  justify-content: space-around;
+
+  &>div {
+    &:hover {
+      background-color: #ff4d4f;
+    }
+
+    user-select     : none;
+    padding         : 5px 10px;
+    text-align      : center;
+    cursor          : pointer;
+    background-color: #f5222d;
+    color           : #fff;
+    border-radius   : 2px;
+    box-shadow      : 0 1px 3px #ffa39e,
+    0 -1px 3px #ffa39e,
+    1px 0 3px #ffa39e,
+    -1px 0 3px #ffa39e;
+  }
+}

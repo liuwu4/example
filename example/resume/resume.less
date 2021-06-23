@@ -1,0 +1,140 @@
+html,
+body {
+  margin : 0;
+  padding: 0;
+}
+
+@app: ~'#app';
+
+body {
+  display        : flex;
+  justify-content: center;
+  height         : 100%;
+}
+
+#flex {
+  display: flex;
+
+  #row {
+    flex-direction : row;
+    justify-content: center;
+  }
+
+  #column {
+    flex-direction: column;
+  }
+}
+
+@{app} {
+  height          : 100%;
+  width           : 80%;
+  background-color: #fff;
+  #flex();
+  #flex>#row;
+
+  &>header {
+    flex            : 1;
+    display         : flex;
+    align-items     : center;
+    flex-direction  : column;
+    padding         : 20px 0;
+    background-color: #6b4b24;
+    color           : #fff;
+
+    &>.avatar {
+      height          : 100px;
+      width           : 100px;
+      border-radius   : 50%;
+      margin-bottom   : 10px;
+      background-color: #fff;
+    }
+
+    &>.person {
+      width: 50%;
+
+      &>.item {
+        &>.person-title {
+          &::after {
+            content       : "：";
+            display       : inline-block;
+            vertical-align: text-top;
+          }
+        }
+
+        margin: 10px 0;
+        width : 100%;
+      }
+    }
+
+    &>.skill {
+      margin: 20px 0;
+      width : 50%;
+
+      &>.item {
+        margin: 10px 0;
+
+        &>div {
+          height          : 4px;
+          width           : 100%;
+          margin-top      : 4px;
+          border-radius   : 20px;
+          background-color: #fff;
+
+          &>.proficiency {
+            height          : 100%;
+            border-radius   : 20px;
+            background-color: #ce9d61;
+          }
+        }
+      }
+    }
+  }
+
+  &>main {
+    flex            : 2;
+    padding         : 0 20px;
+    background-color: #f0eae4;
+
+    &>h3 {
+      text-align: center;
+    }
+
+    &>#projects {
+      width: 100%;
+
+      &>.columns {
+        padding: 10px 0;
+
+        &:not(:last-child) {
+          border-bottom: 2px solid #6b4b24;
+        }
+
+        &>div {
+          line-height: 2;
+        }
+
+
+        &>.description,
+        .question {
+          display: block;
+
+          &>ul {
+            list-style: decimal;
+
+            &>li {
+              line-height: 1.5;
+            }
+          }
+        }
+      }
+    }
+
+    &>#evaluate {
+      margin-top: 10px;
+
+      &>h4 {
+        text-align: center;
+      }
+    }
+  }
+}
